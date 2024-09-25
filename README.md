@@ -38,7 +38,7 @@ the Connection object's `Open` method.
 
 To open an Access database our string would look like the following:
 
-```cpp
+```vbscript
 Dim ConnectionString
 ConnectionString = "DRIVER={Microsoft Access Driver (*.mdb)};" &_
                    "DBQ=C:\MyDatabases\database.mdb;DefaultDir=;UID=;PWD=;"
@@ -49,7 +49,7 @@ no username or password requirements. If we wanted to use a different database d
 
 To create the ADO Connection object simply `Dim` a variable and get the server to do the work.
 
-```cpp
+```vbscript
 Dim Connection
 Set Connection = Server.CreateObject("ADODB.Connection")
 ```
@@ -57,7 +57,7 @@ Set Connection = Server.CreateObject("ADODB.Connection")
 Then to open the database we (optionally) set some of the properties of the Connection
 and call `Open`
 
-```cpp
+```vbscript
 Connection.ConnectionTimeout = 30
 Connection.CommandTimeout = 80
 Connection.Open ConnectionString
@@ -72,7 +72,7 @@ the ADO RecordSet object. Using this objects `Open` method we can pass in
 any SQL string that our database driver supports and receive back a set of records 
 (assuming your are SELECTing records, and not DELETEing).
 
-```cpp
+```vbscript
 ' Create a RecordSet Object
 Dim rs
 set rs = Server.CreateObject("ADODB.RecordSet")
@@ -90,7 +90,7 @@ in our database.
 
 The final step is doing something with this information. We'll simply list it.
 
-```cpp
+```vbscript
 ' This will list all Column headings in the table
 Dim item
 For each item in rs.Fields
@@ -116,7 +116,7 @@ where `field1` is the name of a field in the table.
 Always remember to close your recordsets and Connections and free any resources
 associated with them
 
-```cpp
+```vbscript
 rs.Close
 set rs = nothing
 
